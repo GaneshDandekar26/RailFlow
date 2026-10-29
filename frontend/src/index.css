@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: Barlow, ui-sans-serif, system-ui, sans-serif;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-canvas text-ink antialiased;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  h1, h2, h3 {
+    letter-spacing: -0.01em;
+  }
+  :focus-visible {
+    outline: 2px solid #2f6bff;
+    outline-offset: 2px;
+  }
+  button, a, select, input {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-card border border-line bg-white shadow-card;
+  }
+
+  .btn {
+    @apply inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded-xl px-4 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-sm {
+    @apply h-8 rounded-lg px-3 text-[13px];
+  }
+  .btn-primary {
+    @apply bg-rail-600 text-white shadow-sm hover:bg-rail-700 disabled:hover:bg-rail-600;
+  }
+  .btn-secondary {
+    @apply border border-line bg-white text-ink hover:bg-canvas disabled:hover:bg-white;
+  }
+  .btn-danger {
+    @apply bg-stop-600 text-white shadow-sm hover:bg-stop-700;
+  }
+  .btn-ghost {
+    @apply text-ink-500 hover:bg-canvas hover:text-ink;
+  }
+  .icon-btn {
+    @apply inline-flex h-8 w-8 items-center justify-center rounded-lg text-ink-500 transition-colors hover:bg-canvas hover:text-ink disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-transparent disabled:hover:text-ink-500;
+  }
+
+  .input {
+    @apply h-10 w-full rounded-xl border border-line bg-white px-3 text-[15px] text-ink placeholder:text-ink-300 transition-shadow focus:border-rail-500 focus:outline-none focus:ring-2 focus:ring-rail-500/20 disabled:bg-canvas disabled:text-ink-400;
+  }
+  .input:focus-visible {
+    outline: none;
+  }
+  .input-error {
+    @apply border-stop-500 focus:border-stop-500 focus:ring-stop-500/20;
+  }
+
+  .field-label {
+    @apply mb-1.5 block text-sm font-semibold text-ink;
+  }
+  .field-hint {
+    @apply mt-1.5 text-[13px] text-ink-500;
+  }
+  .field-error {
+    @apply mt-1.5 flex items-start gap-1.5 text-[13px] font-medium text-stop-700;
+  }
+
+  .table-head {
+    @apply px-4 py-3 text-left text-[13px] font-semibold text-ink-500;
+  }
+}
+
+/* Dashed connector used for the part of a route the train has not reached yet. */
+.track-dashed {
+  background-image: linear-gradient(to bottom, #cbd3e0 55%, transparent 0);
+  background-size: 2px 8px;
+  background-repeat: repeat-y;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
